@@ -1,0 +1,194 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<div class="container-fluid">
+  <div class="container-fluid border-0 w-75 pt-5">
+    <h1 class="text-center mb-3">Reservation Form</h1>
+    <form [formGroup]="reservationForm" (ngSubmit)=" onSubmit()">
+      <div class="row">
+
+        <!-- name -->
+
+        <div class="col-sm-3">
+          <label>Name *</label>
+        </div>
+        <div class="col-sm-9">
+          <input type="text" formControlName='name' name='mame' placeholder="Name"
+            class="form-control bg-light border-0 w-75" />
+          <div class='pt-2'>
+            <span *ngIf="name.invalid && name.touched" class=' alert text-danger m-0 p-0 '>
+              Name is required.
+            </span>
+          </div>
+        </div>
+
+        <!-- email -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Email *</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <input type="text" formControlName='email' name='email' placeholder="Email *"
+            class="form-control bg-light border-0 w-75" />
+          <div class='pt-2 '>
+            <span *ngIf="email.required   && email.touched" class=' text text-danger m-0 p-0 '>
+              email is required.
+            </span>
+            <span *ngIf="email.invalid && email.errors && email.touched " class=' text text-danger m-0 p-0'>
+              email should be valid.
+            </span>
+
+          </div>
+        </div>
+
+        <!-- Room type -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Room Type</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <select formControlName='roomtype' name="roomtype" class="form-control w-75">
+            <option>Select</option>
+            <option *ngFor="let room of rooms" value="{{room}}">{{room}}</option>
+          </select>
+          <div class='pt-2'>
+            <span *ngIf="roomtype.invalid && roomtype.errors && roomtype.touched" class=' alert text-danger m-0 p-0 '>
+              roomtype is required.
+            </span>
+          </div>
+        </div>
+
+        <!-- Arrival Date -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Arrival Date *</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <input type="text" formControlName='arrivalDate' class="form-control bg-light border-0 w-75" />
+          <div class='pt-2'>
+            <span *ngIf="arrivalDate.invalid && arrivalDate.touched" class=' alert text-danger m-0 p-0 '>
+              Date is required(DD/MM/YYYY or DD-MM-YYYY).
+            </span>
+          </div>
+        </div>
+
+        <!-- Number of Guests -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Number Of Guest *</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <input type="number" formControlName="guests" type="number" class="form-control bg-light border-0 w-25"
+            name="guests" />
+          <div class='pt-2'>
+            <span *ngIf="guests.invalid && guests.touched" class=' text text-danger m-0 p-0 '>
+              Please Enter number of guests.
+            </span>
+          </div>
+        </div>
+
+        <!-- Free Pickup -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Free Pickup *</label>
+        </div>
+        <div class="col-sm-9 mt-3 ">
+          <input type="radio" name="pickup" formControlName="pickup" value="yes" class="bg-light border-primary" />
+          Yes
+          <input type="radio" name="pickup" formControlName="pickup" value="no" class="bg-light border-primary" />
+          No
+          <div class='pt-2'>
+            <span *ngIf="pickup.invalid && pickup.touched" class=' alert text-danger m-0 p-0 '>
+              Please select one
+            </span>
+          </div>
+        </div>
+
+        <!-- Flight Number -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Flight Number</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <input type="text" formControlName="flightno" placeholder="Flight Number"
+            class="form-control bg-light border-0 w-75" name='flightno' />
+          <div class="pt-2">
+            <span *ngIf="flightno.invalid && flightno.touched" class=' alert text-danger m-0 p-0 '>
+              Please Enter number of guests.
+            </span>
+          </div>
+        </div>
+
+        <!-- Special Request -->
+
+        <div class="col-sm-3 mt-3">
+          <label>Special Request</label>
+        </div>
+        <div class="col-sm-9 mt-3">
+          <textarea placeholder="Type here" type="text" formControlName="request" name="request"
+            class="form-control bg-light border-0 w-75"></textarea>
+          <div class="pt-2">
+            <span *ngIf="request.invalid && request.touched" class=' alert text-danger m-0 p-0 '>
+              Please Enter number of guests.
+            </span>
+          </div>
+        </div>
+
+        <!-- Add new reservation button -->
+
+        <div class="col-sm-10 mb-2">
+          <input type="submit" value="Submit" id="submit"
+            class="bg-primary  btn btn-primary pl-3 pr-3 pt-1 pb-1 float-right mr-3 mt-4 border-0" [disabled]= "reservationForm.invalid" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Table  -->
+
+  <div class="container-fluid border-0 pt-5">
+    <h1 class="text-center mb-3">Reservation Form Data</h1>
+    <table class="table">
+      <thead>
+        <tr>
+
+          <!-- Text boxes field names -->
+
+          <th>Name</th>
+          <th>Email *</th>
+          <th>Room Type</th>
+          <th>Arrival Date</th>
+          <th>Number of Guest</th>
+          <th>Free Pickup</th>
+          <th>Flight Number</th>
+          <th>Special Request</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Interploation of data in their respective fields -->
+
+        <tr *ngFor="let reserve of reservation let i=index">
+          <td>{{reserve.name}}</td>
+          <td>{{reserve.email}}</td>
+          <td>{{reserve.roomtype}}</td>
+          <td>{{reserve.arrivalDate}}</td>
+          <td>{{reserve.guests}}</td>
+          <td>{{reserve.pickup}}</td>
+          <td>{{reserve.flightno}}</td>
+          <td>{{reserve.request}}</td>
+          <!-- update Button -->
+
+          <td><input type="button" class="btn-success btn-sm" value="Update" (click)="onUpdate(i)">
+
+            <!-- Delete Button -->
+
+            <input type="button" class="btn-danger btn-sm" value="Delete" (click)='onDelete(i)'>
+
+            <!-- Edit Button -->
+
+            <input type="button" class="btn-info btn-sm" value="Edit" (click)='onEdit(i)'>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
