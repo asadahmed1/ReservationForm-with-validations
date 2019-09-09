@@ -176,7 +176,7 @@
           <td>{{reserve.request}}</td>
           <!-- update Button -->
 
-          <td><input type="button" class="btn-success btn-sm" value="Update" (click)="onUpdate(i)">
+          <td><input type="button" class="btn-success btn-sm" [disabled]= "reservationForm.invalid" value="Update" (click)="onUpdate(i)">
 
             <!-- Delete Button -->
 
