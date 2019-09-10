@@ -10,3 +10,7 @@ Validation will also work for the update button if any validation not validates 
 Edit and Delete functionality has also been added
 ### Custom validation path src/app/Validators
 
+
+# Loader on app
+When our app will start there is a loader
+
