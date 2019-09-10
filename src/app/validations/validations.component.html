@@ -1,4 +1,17 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Loader When app satart or refresh  -->
+<ngx-spinner
+  bdOpacity = 0.9
+  bdColor = "#00adff"
+  size = "medium"
+  color = "#fdfdfd"
+  type = "cube-transition"
+  [fullScreen] = "true"
+
+  >  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<!-- Loader When app satart or refresh -->
+
 <div class="container-fluid">
   <div class="container-fluid border-0 w-75 pt-5">
     <h1 class="text-center mb-3">Reservation Form</h1>
@@ -62,7 +75,7 @@
           <label>Arrival Date *</label>
         </div>
         <div class="col-sm-9 mt-3">
-          <input type="text" formControlName='arrivalDate' class="form-control bg-light border-0 w-75" />
+          <input type="text" formControlName='arrivalDate' placeholder="DD/MM/YYYY or DD-MM-YYYY" class="form-control bg-light border-0 w-75" />
           <div class='pt-2'>
             <span *ngIf="arrivalDate.invalid && arrivalDate.touched" class=' alert text-danger m-0 p-0 '>
               Date is required(DD/MM/YYYY or DD-MM-YYYY).
