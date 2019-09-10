@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValidationsComponent } from './validations/validations.component';
 import {FormsModule, ReactiveFormsModule,AbstractControl} from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
+
+
 
 @NgModule({
   declarations: [
@@ -16,6 +19,7 @@ import {FormsModule, ReactiveFormsModule,AbstractControl} from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule
 
   ],
   providers: [],
